@@ -2,153 +2,162 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 
+const contactItems = [
+  { icon: <FiMail size={22} />, label: 'Email', value: 'hello@fis-team.com', color: '#FF6B9D' },
+  { icon: <FiPhone size={22} />, label: 'Phone', value: '+62 666-666-6666', color: '#4ECDC4' },
+  { icon: <FiMapPin size={22} />, label: 'Location', value: 'Surabaya, Indonesia', color: '#FFE135' },
+]
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [sent, setSent] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Reset form
+    setSent(true)
     setFormData({ name: '', email: '', message: '' })
+    setTimeout(() => setSent(false), 3000)
   }
 
   return (
-    <section id="contact" className="relative py-32 px-6 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="max-w-5xl mx-auto relative z-10"
-      >
-        <div className="text-center mb-16">
-          <p className="uppercase tracking-[10px] text-cyan-400 mb-4">
-            Get In Touch
-          </p>
-
-          <h2 className="text-5xl md:text-7xl font-black neon-text">
-            LET'S COLLABORATE
-          </h2>
-
-          <p className="max-w-2xl mx-auto mt-6 text-gray-400 leading-relaxed">
-            Ada project atau ide? Mari kita wujudkan sesuatu yang extraordinary bersama.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="glass rounded-2xl p-8 text-center neon-box"
-          >
-            <div className="text-4xl text-cyan-400 mb-4 flex justify-center">
-              <FiMail />
-            </div>
-            <h3 className="text-xl font-bold mb-2">Email</h3>
-            <p className="text-gray-400">hello@retroteam.com</p>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="glass rounded-2xl p-8 text-center neon-box"
-          >
-            <div className="text-4xl text-pink-400 mb-4 flex justify-center">
-              <FiPhone />
-            </div>
-            <h3 className="text-xl font-bold mb-2">Phone</h3>
-            <p className="text-gray-400">+62 821-4685-8037</p>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="glass rounded-2xl p-8 text-center neon-box"
-          >
-            <div className="text-4xl text-purple-400 mb-4 flex justify-center">
-              <FiMapPin />
-            </div>
-            <h3 className="text-xl font-bold mb-2">Location</h3>
-            <p className="text-gray-400">Surabaya, Indonesia</p>
-          </motion.div>
-        </div>
-
-        <motion.form
-          onSubmit={handleSubmit}
+    <section id="contact" style={{ background: '#0D0D0D', borderTop: '3px solid #0D0D0D', padding: '80px 24px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        {/* Header */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="glass rounded-[32px] p-8 md:p-12 neon-box"
+          style={{ marginBottom: '56px' }}
         >
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label className="block text-sm font-semibold mb-3 text-cyan-400">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-400 focus:outline-none transition text-white placeholder-gray-500"
-                placeholder="Your name"
-              />
+          <span className="section-label">Get In Touch</span>
+          <h2 className="display-font" style={{ fontSize: 'clamp(42px, 7vw, 80px)', lineHeight: 1, letterSpacing: '-0.03em', margin: '16px 0 0', color: '#F5F0E8' }}>
+            LET'S<br /><span style={{ color: '#FF6B9D' }}>COLLAB</span><br />ORATE
+          </h2>
+          <p style={{ color: '#888', fontSize: '16px', maxWidth: '400px', lineHeight: 1.7, marginTop: '16px' }}>
+            Ada project atau ide? Mari kita wujudkan sesuatu yang extraordinary bersama.
+          </p>
+        </motion.div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'start' }}>
+          {/* Contact info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+          >
+            {contactItems.map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  background: item.color,
+                  border: '3px solid #F5F0E8',
+                  boxShadow: '5px 5px 0 #F5F0E8',
+                  padding: '20px 24px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  color: '#0D0D0D',
+                }}
+              >
+                <div style={{ fontSize: '22px' }}>{item.icon}</div>
+                <div>
+                  <p style={{ fontWeight: 800, fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', margin: 0 }}>{item.label}</p>
+                  <p style={{ fontWeight: 500, fontSize: '15px', marginTop: '2px', marginBottom: 0 }}>{item.value}</p>
+                </div>
+              </div>
+            ))}
+
+            {/* Big quote */}
+            <div style={{ marginTop: '24px', border: '3px solid #FF6B9D', padding: '24px', boxShadow: '5px 5px 0 #FF6B9D' }}>
+              <p className="display-font" style={{ color: '#FF6B9D', fontSize: '32px', lineHeight: 1.2, margin: 0 }}>
+                "BUILDING<br />THE FUTURE<br />TODAY"
+              </p>
             </div>
+          </motion.div>
 
-            <div>
-              <label className="block text-sm font-semibold mb-3 text-pink-400">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-pink-400 focus:outline-none transition text-white placeholder-gray-500"
-                placeholder="Your email"
-              />
-            </div>
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-sm font-semibold mb-3 text-purple-400">
-              Message
-            </label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows="6"
-              className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:border-purple-400 focus:outline-none transition text-white placeholder-gray-500 resize-none"
-              placeholder="Your message"
-            ></textarea>
-          </div>
-
-          <div className="flex gap-4">
-            <button
-              type="submit"
-              className="flex-1 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-pink-500 hover:from-cyan-600 hover:to-pink-600 transition font-semibold neon-box"
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <form
+              onSubmit={handleSubmit}
+              style={{
+                background: '#F5F0E8',
+                border: '3px solid #F5F0E8',
+                boxShadow: '8px 8px 0 #FF6B9D',
+                padding: '36px',
+              }}
             >
-              Send Message
-            </button>
-          </div>
-        </motion.form>
-      </motion.div>
+              {sent && (
+                <div style={{ background: '#4ECDC4', border: '3px solid #0D0D0D', padding: '12px 20px', marginBottom: '24px', fontWeight: 700, color: '#0D0D0D' }}>
+                  ✓ Pesan terkirim! Kami akan segera menghubungi kamu.
+                </div>
+              )}
+
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontWeight: 800, fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px', color: '#0D0D0D' }}>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your name"
+                  className="neo-input"
+                  style={{ width: '100%', padding: '12px 16px', fontSize: '15px' }}
+                />
+              </div>
+
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontWeight: 800, fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px', color: '#0D0D0D' }}>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="your@email.com"
+                  className="neo-input"
+                  style={{ width: '100%', padding: '12px 16px', fontSize: '15px' }}
+                />
+              </div>
+
+              <div style={{ marginBottom: '28px' }}>
+                <label style={{ display: 'block', fontWeight: 800, fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px', color: '#0D0D0D' }}>Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="5"
+                  placeholder="Ceritakan project kamu..."
+                  className="neo-input"
+                  style={{ width: '100%', padding: '12px 16px', fontSize: '15px', resize: 'none' }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="neo-btn display-font"
+                style={{ width: '100%', padding: '16px', background: '#0D0D0D', color: '#FFE135', fontSize: '16px', letterSpacing: '0.08em', border: '3px solid #0D0D0D', boxShadow: '5px 5px 0 #FF6B9D' }}
+              >
+                SEND MESSAGE →
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

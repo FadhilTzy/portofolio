@@ -1,136 +1,83 @@
-import { motion } from 'framer-motion'
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="relative py-16 px-6 border-t border-cyan-500/20">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-pink-500/5"></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="max-w-7xl mx-auto relative z-10"
-      >
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+    <footer style={{ background: '#FFE135', borderTop: '3px solid #0D0D0D', padding: '48px 24px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', marginBottom: '40px' }}>
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-black neon-text mb-4">RETRO TEAM</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Creative digital team yang menghadirkan visual futuristik dengan sentuhan retro.
+            <h3 className="display-font" style={{ fontSize: '28px', color: '#0D0D0D', margin: 0, letterSpacing: '-0.02em' }}>
+              FIS<span style={{ color: '#FF6B9D' }}>TEAM</span>
+            </h3>
+            <p style={{ color: '#555', fontSize: '14px', lineHeight: 1.7, marginTop: '12px' }}>
+              Creative digital team yang menghadirkan visual Unik Dengan Menghadirkan Tema Neobrutalism.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-cyan-400">Quick Links</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#team" className="hover:text-cyan-400 transition">
-                  Team
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="hover:text-pink-400 transition">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-purple-400 transition">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-cyan-400 transition">
-                  Contact
-                </a>
-              </li>
+            <h4 style={{ fontWeight: 800, fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px', color: '#0D0D0D' }}>Quick Links</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {['About', 'Team', 'Projects', 'Contact'].map((link) => (
+                <li key={link}>
+                  <a
+                    href={`#${link.toLowerCase()}`}
+                    style={{ color: '#0D0D0D', textDecoration: 'none', fontWeight: 600, fontSize: '15px' }}
+                    onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
+                    onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
+                  >
+                    → {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-pink-400">Services</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-pink-400 transition">
-                  Web Design
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-pink-400 transition">
-                  Development
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-pink-400 transition">
-                  UI/UX Design
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-pink-400 transition">
-                  Motion Graphics
-                </a>
-              </li>
+            <h4 style={{ fontWeight: 800, fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px', color: '#0D0D0D' }}>Services</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {['Web Design', 'Development', 'UI/UX Design', 'Motion Graphics'].map((s) => (
+                <li key={s} style={{ color: '#444', fontSize: '14px', fontWeight: 500 }}>{s}</li>
+              ))}
             </ul>
           </div>
 
           {/* Social */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-purple-400">Follow Us</h4>
-            <div className="flex gap-4 text-xl">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-cyan-400 transition neon-box"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-pink-400 transition neon-box"
-              >
-                <FaInstagram />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-cyan-400 transition neon-box"
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-pink-400 transition neon-box"
-              >
-                <FaTwitter />
-              </a>
+            <h4 style={{ fontWeight: 800, fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '16px', color: '#0D0D0D' }}>Follow Us</h4>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {[FaGithub, FaInstagram, FaLinkedin, FaTwitter].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="neo-btn"
+                  style={{ width: '40px', height: '40px', background: '#0D0D0D', color: '#FFE135', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 }}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mb-8"></div>
-
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left text-sm text-gray-400">
-          <p>
-            © {currentYear} Retro Team. All rights reserved. Built with
-            <span className="text-pink-400 mx-1">♥</span>
-            and React.
+        <div style={{ borderTop: '3px solid #0D0D0D', paddingTop: '24px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+          <p style={{ margin: 0, fontWeight: 600, fontSize: '14px', color: '#0D0D0D' }}>
+            © {year} FISTEAM. Built with <span style={{ color: '#FF6B9D' }}>♥</span> and React.
           </p>
-
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-cyan-400 transition">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-pink-400 transition">
-              Terms of Service
-            </a>
+          <div style={{ display: 'flex', gap: '16px' }}>
+            {['Privacy Policy', 'Terms of Service'].map((item) => (
+              <a key={item} href="#" style={{ color: '#0D0D0D', fontWeight: 700, fontSize: '13px', textDecoration: 'underline' }}>
+                {item}
+              </a>
+            ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </footer>
   )
 }

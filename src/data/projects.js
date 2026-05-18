@@ -1,29 +1,17 @@
+const base = import.meta.env.BASE_URL || '/'
+
+
+
 export const projects = [
   {
     id: 1,
-    title: 'Retro Commerce',
-    image: '/projects/project1.jpg',
+    title: 'Web Portofolio',
+    image: `${base}projects/project1.png`,
     stack: ['React', 'Tailwind', 'Firebase'],
-    description: 'Modern ecommerce dengan UI synthwave futuristic.',
-    github: '#',
+    description: 'Website portofolio kelompok dengan tema NeoBrutalism UI yang menampilkan desain modern, bold, dan kreatif untuk memperkenalkan tim serta project kami.',
+    github: 'https://github.com/FadhilTzy/portofolio',
     demo: '#',
   },
-  {
-    id: 2,
-    title: 'Cyber Dashboard',
-    image: '/projects/project2.jpg',
-    stack: ['React', 'ChartJS', 'NodeJS'],
-    description: 'Dashboard analytics bertema cyberpunk.',
-    github: '#',
-    demo: '#',
-  },
-  {
-    id: 3,
-    title: 'Neon Portfolio',
-    image: '/projects/project3.jpg',
-    stack: ['Vite', 'Framer Motion'],
-    description: 'Portfolio interaktif dengan animasi cinematic.',
-    github: '#',
-    demo: '#',
-  },
+ 
+  
 ]

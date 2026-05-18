@@ -1,19 +1,19 @@
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
+import Home from './components/Home'
+import About from './components/About'
 import TeamSection from './components/TeamSection'
 import Projects from './components/Projects'
-import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="gradient-bg min-h-screen">
+    <div className="min-h-screen" style={{ background: '#F5F0E8', fontFamily: "'Space Grotesk', sans-serif" }}>
       <Navbar />
-      <Hero />
+      <Home />
+      <About />
       <TeamSection />
       <Projects />
-      <About />
       <Contact />
       <Footer />
     </div>

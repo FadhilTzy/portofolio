@@ -4,43 +4,32 @@ import { motion } from 'framer-motion'
 
 const TeamSection = () => {
   return (
-    <section
-      id="team"
-      className="relative py-32 px-6 overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="max-w-7xl mx-auto relative z-10"
-      >
-        <div className="text-center mb-20">
-          <p className="uppercase tracking-[10px] text-cyan-400 mb-4">
-            Our Creative Squad
-          </p>
-
-          <h2 className="text-5xl md:text-7xl font-black neon-text">
-            TEAM MEMBERS
+    <section id="team" style={{ background: '#FFE135', borderTop: '3px solid #0D0D0D', borderBottom: '3px solid #0D0D0D', padding: '80px 24px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          style={{ marginBottom: '56px', display: 'flex', flexDirection: 'column', gap: '12px' }}
+        >
+          <span className="section-label" style={{ background: '#0D0D0D', color: '#FFE135' }}>Our Creative Squad</span>
+          <h2 className="display-font" style={{ fontSize: 'clamp(42px, 7vw, 80px)', lineHeight: 1, letterSpacing: '-0.03em', color: '#0D0D0D', margin: 0 }}>
+            TEAM<br />MEMBERS
           </h2>
-
-          <p className="max-w-2xl mx-auto mt-6 text-gray-400 leading-relaxed">
-            Tim kreatif dengan kombinasi skill development,
-            design, motion, dan visual storytelling modern.
+          <p style={{ color: '#444', fontSize: '16px', maxWidth: '500px', lineHeight: 1.7, fontWeight: 500 }}>
+            Tim kreatif dengan kombinasi skill development, design, motion, dan visual storytelling modern.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {members.map((member) => (
-            <MemberCard
-              key={member.id}
-              member={member}
-            />
+        {/* Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+          {members.map((member, index) => (
+            <MemberCard key={member.id} member={member} index={index} />
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }
