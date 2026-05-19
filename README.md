@@ -57,3 +57,7 @@ src/
 ├── assets/
 ├── types/
 └── App.tsx
+```
+
+## Tutorial
+Terkait tutorialnya bisa langsung di akses di file.md
