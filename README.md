@@ -18,6 +18,12 @@ Website portfolio modern berbasis React + Vite dengan tampilan Neobrutalism yang
         <sub><b>Muhammad Sulaiman</b></sub>
       </a>
     </td>
+     <td align="center">
+      <a href="https://github.com/kimak223">
+        <img src="https://github.com/kimak223.png" width="100px;" alt="kimak223"/><br>
+        <sub><b>M irfan</b></sub>
+      </a>
+    </td>
   </tr>
 </table>
 
