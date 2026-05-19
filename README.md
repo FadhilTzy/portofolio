@@ -30,7 +30,7 @@ Website portfolio modern berbasis React + Vite dengan tampilan Neobrutalism yang
 ## 📌 Features
 
 - Responsive modern UI
-- Cyberpunk / futuristic design
+- Neobrutalism / futuristic design
 - Interactive cursor effect
 - Smooth scrolling navigation
 - Project showcase section
